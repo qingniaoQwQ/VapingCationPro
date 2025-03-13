@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们 - VapingCation</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #00f7ff;
+            --accent-purple: #6c5ce7;
+            --dark-bg: #0a0a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background: var(--dark-bg);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        /* 团队成员容器 */
+        .about-team {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8em;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 网格布局 */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        /* 成员卡片 */
+        .member-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .member-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,247,255,0.15);
+        }
+
+        /* 皮肤展示 */
+        .skin-container {
+            width: 160px;
+            height: 160px;
+            margin: -50px auto 25px;
+            border-radius: 50%;
+            border: 3px solid var(--primary-blue);
+            padding: 5px;
+            background: linear-gradient(45deg,
+                rgba(0, 247, 255, 0.15),
+                rgba(108, 92, 231, 0.15));
+            box-shadow: 0 0 25px rgba(0, 247, 255, 0.2);
+            position: relative;
+        }
+
+        .minecraft-skin {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        /* 成员信息 */
+        .member-info {
+            text-align: center;
+        }
+
+        .member-name {
+            font-size: 1.6em;
+            margin: 15px 0;
+            color: var(--primary-blue);
+            letter-spacing: 1px;
+        }
+
+        .positions {
+            margin: 20px 0;
+            line-height: 1.6;
+            color: #ccc;
+            min-height: 90px;
+        }
+
+        .positions p {
+            margin: 8px 0;
+            font-size: 0.95em;
+        }
+
+        /* B站链接 */
+        .bilibili-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 25px;
+            background: rgba(0, 180, 255, 0.15);
+            border-radius: 30px;
+            color: var(--primary-blue);
+            text-decoration: none;
+            transition: 0.3s;
+            border: 1px solid rgba(0,180,255,0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .bilibili-link:hover {
+            background: rgba(0, 180, 255, 0.3);
+            box-shadow: 0 0 15px rgba(0,180,255,0.3);
+        }
+
+        .bilibili-link i {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        /* 占位样式 */
+        .placeholder .skin-container {
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        .empty-skin {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            color: rgba(255,255,255,0.3);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+                padding: 0;
+            }
+
+            .skin-container {
+                width: 140px;
+                height: 140px;
+                margin-top: -40px;
+            }
+
+            .member-name {
+                font-size: 1.4em;
+            }
+        }
+    </style>
+</head>
+<body>
+<section class="about-team">
+    <h2 class="section-title">核心团队</h2>
+    <div class="team-grid">
+        <!-- 青岛 -->
+        <div class="member-card">
+            <div class="skin-container">
+                <img src="https://crafatar.com/avatars/317c35b9-512b-4ded-a77d-e61eafd482ed?size=160&overlay"
+                     alt="青岛"
+                     class="minecraft-skin">
+            </div>
+            <div class="member-info">
+                <h3 class="member-name">青岛</h3>
+                <div class="positions">
+                    <p>🛠️ 服务器服主</p>
+                    <p>🎮 VapingCation CEO</p>
+                    <p>💻 BlockPixel技术支持</p>
+                </div>
+                <a href="https://space.bilibili.com/1622211276?spm_id_from=333.1007.0.0"
+                   class="bilibili-link"
+                   target="_blank">
+                    <i class="fab fa-bilibili"></i>
+                    B站空间
+                </a>
+            </div>
+        </div>
+
+        <!-- 鹿目丹香 -->
+        <div class="member-card">
+            <div class="skin-container">
+                <img src="https://crafatar.com/avatars/8f3f619a-a843-4ce0-86b8-41c6adc75857?size=160&overlay"
+                     alt="鹿目丹香"
+                     class="minecraft-skin">
+            </div>
+            <div class="member-info">
+                <h3 class="member-name">鹿目丹香</h3>
+                <div class="positions">
+                    <p>🌸 二次元管理</p>
+                    <p>🔧 元老级管理员</p>
+                    <p>🎨 内容策划</p>
+                </div>
+                <a href="https://space.bilibili.com/438071827?spm_id_from=333.337.0.0"
+                   class="bilibili-link"
+                   target="_blank">
+                    <i class="fab fa-bilibili"></i>
+                    B站空间
+                </a>
+            </div>
+        </div>
+
+        <!-- 3U8655 -->
+        <div class="member-card">
+            <div class="skin-container">
+                <img src="https://crafatar.com/avatars/3a35c07c-7183-45f1-84b5-3aff2cf5a648?size=160&overlay"
+                     alt="3U8655"
+                     class="minecraft-skin">
+            </div>
+            <div class="member-info">
+                <h3 class="member-name">3U8655</h3>
+                <div class="positions">
+                    <p>🎯 自称CS青训选手</p>
+                    <p>💻 技术主管</p>
+                    <p>🏗️ BlockPixel所有者</p>
+                </div>
+                <a href="https://space.bilibili.com/641924995?spm_id_from=333.337.0.0"
+                   class="bilibili-link"
+                   target="_blank">
+                    <i class="fab fa-bilibili"></i>
+                    B站空间
+                </a>
+            </div>
+        </div>
+
+        <!-- Zhiai -->
+        <div class="member-card">
+            <div class="skin-container">
+                <img src="https://crafatar.com/avatars/7f2c4d41-ce8e-4880-a02a-5e3558a129be?size=160&overlay"
+                     alt="Zhiai"
+                     class="minecraft-skin">
+            </div>
+            <div class="member-info">
+                <h3 class="member-name">Zhiai</h3>
+                <div class="positions">
+                    <p>🔌 技术主管</p>
+                    <p>⚙️ 前ZAMC服主</p>
+                    <p>📡 系统架构师</p>
+                </div>
+                <a href="https://space.bilibili.com/397630726?spm_id_from=333.1007.0.0"
+                   class="bilibili-link"
+                   target="_blank">
+                    <i class="fab fa-bilibili"></i>
+                    B站空间
+                </a>
+            </div>
+        </div>
+
+        <!-- 占位成员1 -->
+        <div class="member-card placeholder">
+            <div class="skin-container">
+                <div class="empty-skin">
+                    <i class="fas fa-user-plus"></i>
+                </div>
+            </div>
+            <div class="member-info">
+                <h3 class="member-name">虚位以待</h3>
+                <div class="positions">
+                    <p>🌟 团队席位预留中</p>
+                    <p>🚀 期待你的加入</p>
+                </div>
+                <div class="bilibili-link disabled">
+                    <i class="fas fa-lock"></i>
+                    即将开放
+                </div>
+            </div>
+        </div>
+
+        <!-- 占位成员2 -->
+        <div class="member-card placeholder">
+            <div class="skin-container">
+                <div class="empty-skin">
+                    <i class="fas fa-user-plus"></i>
+                </div>
+            </div>
+            <div class="member-info">
+                <h3 class="member-name">招募中</h3>
+                <div class="positions">
+                    <p>💡 多个职位开放</p>
+                    <p>📩 点击申请加入</p>
+                </div>
+                <a href="#apply" class="bilibili-link apply-btn">
+                    <i class="fas fa-envelope"></i>
+                    立即申请
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // 占位卡片交互效果
+    document.querySelectorAll('.placeholder').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'rotate(2deg) translateY(-5px)';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'none';
+        });
+    });
+
+    // 禁用按钮提示
+    document.querySelectorAll('.disabled').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('该功能暂未开放，敬请期待！');
+        });
+    });
+</script>
+</body>
+</html>

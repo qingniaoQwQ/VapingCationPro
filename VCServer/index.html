@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VapingCation服务器 | 即刻加入</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"  rel="stylesheet">
+    <style>
+        :root {
+            --main-color: #2ed573;
+            --second-color: #ffa502;
+            --accent-color: #ff4757;
+            --text-color: #2d3436;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            /* 更换背景图位置：替换bg.jpg 文件即可 */
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                        url('bg.jpg')  center/cover fixed;
+            font-family: 'Microsoft YaHei', sans-serif;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .server-ip {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, var(--main-color), var(--accent-color));
+            color: var(--text-color);
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            display: inline-block;
+            margin: 2rem 0;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 3px solid white;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mascot {
+            /* 看板娘图片路径配置 */
+            content: url('./images/mascot.png');  /* 主路径 */
+            width: 280px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            animation: float 3s ease-in-out infinite;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        /* 备用图片加载 */
+        .mascot[src=""]:not([src]),
+        .mascot:not([src]) {
+            content: url('./images/mascot.png');  /* 备用路径 */
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .status-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            margin: 2rem 0;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        /* 音乐控制按钮样式 */
+        #music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+        }
+    </style>
+</head>
+<body>
+<!-- 背景音乐播放器 -->
+<audio id="bgm" loop>
+    <!-- 音频文件路径配置 -->
+    <source src="./audio/bgm.mp3"  type="audio/mpeg">
+    <source src="./audio/bgm.mp3"  type="audio/mpeg">
+</audio>
+
+<!-- 音乐控制按钮 -->
+<button id="music-control">
+    <i class="fas fa-volume-mute"></i>
+</button>
+
+<!-- 看板娘图片 -->
+<img src="" class="mascot" alt="服务器看板娘" onclick="mascotClick()">
+
+<div class="container">
+    <div class="status-card">
+        <h1 style="font-size: 2.8rem; margin-bottom: 1rem;">🎮 欢迎加入VapingCation服务器</h1>
+
+        <div class="server-ip" onclick="copyIP()">
+            <i class="fas fa-server"></i> MC.VapingCation.CN
+            <div id="copy-hint" style="font-size: 0.9rem; margin-top: 0.5rem;
+                     background: rgba(255,255,255,0.2); border-radius: 15px; padding: 4px 10px;">
+                点击复制服务器IP
+            </div>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-box">
+                <h3><i class="fas fa-users"></i> 在线人数</h3>
+                <p style="font-size: 2em; margin: 0.5rem 0; color: var(--main-color);">87/100</p>
+                <div class="progress" style="height: 8px; background: rgba(255,255,255,0.2); border-radius: 4px;">
+                    <div class="progress-bar" style="width: 87%; height: 100%; background: var(--main-color); border-radius: 4px;"></div>
+                </div>
+            </div>
+
+            <div class="stat-box">
+                <h3><i class="fas fa-heartbeat"></i> 服务器状态</h3>
+                <div class="online-status">
+                    <p style="font-size: 2em; margin: 0.5rem 0; color: var(--main-color);">● 在线</p>
+                </div>
+                <div class="ping" style="font-size: 1.2rem;">延迟: 36ms</div>
+            </div>
+        </div>
+
+        <div class="qq-box">
+            <h3><i class="fab fa-qq"></i> 官方QQ群</h3>
+            <div style="display: flex; justify-content: center; gap: 2rem; align-items: center; margin: 1.5rem 0;">
+                <div class="qrcode" style="background: #fff; padding: 10px; border-radius: 12px;">
+                    <img src="./VCServer/QQ.png"  alt="QQ群二维码" style="width: 150px; height: 150px;">
+                </div>
+                <div style="text-align: left;">
+                    <p style="font-size: 1.2rem;">群号：169608320</p>
+                </div>
+            </div>
+            <a href="https://qm.qq.com/cgi-bin/qm/qr?k=d1fUhKE_Wp8izYXGFSUKsZ4v0Ho95_SD&jump_from=webapi&authKey=I0g/SRGAcOwkWFqU4sc1XaTPj0iT/6J78KKT6TLs4OiSr4XHHFTsAcUVB5sxjsal"
+               style="display: inline-block; padding: 1rem 2rem;
+                          background: var(--second-color); color: white;
+                          border-radius: 25px; text-decoration: none;
+                          transition: transform 0.3s;">
+                <i class="fas fa-door-open"></i> 立即加入
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 自动播放背景音乐（需用户交互后）
+    document.addEventListener('click',  function initAudio() {
+        const bgm = document.getElementById('bgm');
+        try {
+            bgm.play();
+            document.removeEventListener('click',  initAudio);
+        } catch (e) {
+            console.log(' 需要用户交互后才能播放音频');
+        }
+    });
+
+    // 音乐控制按钮
+    const musicControl = document.getElementById('music-control');
+    musicControl.addEventListener('click',  () => {
+        const bgm = document.getElementById('bgm');
+        bgm.muted  = !bgm.muted;
+        musicControl.innerHTML  = bgm.muted
+            ? '<i class="fas fa-volume-mute"></i>'
+            : '<i class="fas fa-volume-up"></i>';
+    });
+
+    // 看板娘点击互动
+    let clickCount = 0;
+    function mascotClick() {
+        clickCount++;
+        const mascot = document.querySelector('.mascot');
+        mascot.style.transform  = clickCount % 3 === 0 ? 'scaleX(-1)' : '';
+
+        // 樱花特效
+        for(let i = 0; i < 2; i++) {
+            const sakura = document.createElement('div');
+            sakura.style  = `position: fixed;
+                left: ${Math.random()  * window.innerWidth}px;
+                animation: float ${5 + Math.random()  * 5}s ease-in-out;
+                font-size: ${20 + Math.random()  * 20}px;
+                pointer-events: none;`;
+            sakura.innerHTML  = '🌸';
+            document.body.appendChild(sakura);
+            setTimeout(() => sakura.remove(),  5000);
+        }
+    }
+
+    // IP复制功能
+    function copyIP() {
+        navigator.clipboard.writeText('mc.vapingcation.cn').then(()  => {
+            const hint = document.getElementById('copy-hint');
+            hint.textContent  = '✓ 已复制到剪贴板';
+            hint.style.backgroundColor  = 'rgba(46, 213, 115, 0.3)';
+            setTimeout(() => {
+                hint.textContent  = '点击复制服务器IP';
+                hint.style.backgroundColor  = 'rgba(255,255,255,0.2)';
+            }, 2000);
+        });
+    }
+</script>
+</body>
+</html>
